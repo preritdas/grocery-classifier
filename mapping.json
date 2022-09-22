@@ -33,6 +33,9 @@
         "corn",
         "celery",
         "spinach",
+        "baby spinach",
+        "spinach bag",
+        "baby spinach bag",
         "asparagus",
         "cabbage"
     ],
@@ -44,5 +47,13 @@
         "pork",
         "sausage",
         "bacon"
-    ]
+    ],
+    "dairy": [
+        "cheese",
+        "milk",
+        "whole milk",
+        "whole lactaid",
+        "lactaid",
+        "2% lactaid"
+    ]   
 }
