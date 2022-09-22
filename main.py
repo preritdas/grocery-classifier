@@ -19,12 +19,27 @@ def alert_use(number, content):
     )
 
 
+concats = {}
+
+
 @app.route('/inbound-sms', methods=["POST"])
 def inbound_sms():
+    global concats
+
     inbound_sms_content = request.get_json()
     if type(inbound_sms_content) is not dict:
         return ('', 400)
 
+    if inbound_sms_content["concat"] == "true":
+        if int(inbound_sms_content["concat-part"]) < int(inbound_sms_content["concat-total"]):
+            concats[inbound_sms_content["msisdn"]] = [inbound_sms_content["text"]]
+            print("Storing.")
+            return '', 204
+
+        # If this is the final concat message
+        print("Reading.")
+        inbound_sms_content["text"] = ''.join(concats[inbound_sms_content["msisdn"]] + [inbound_sms_content["text"]])
+            
     sender = inbound_sms_content["msisdn"]
     grocery_list = inbound_sms_content["text"]
 
@@ -41,6 +56,7 @@ def inbound_sms():
 
     alert_use(sender, result)
 
+    print("Concats:", concats)
     return '', 204
 
 
