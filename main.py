@@ -33,7 +33,6 @@ def inbound_sms():
             recipient = utils.CUSTOM_RECIPIENTS[sender]
         )
 
-
     return '', 204
 
 
