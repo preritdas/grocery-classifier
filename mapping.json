@@ -47,7 +47,13 @@
         "pork",
         "sausage",
         "bacon",
-        "cold meat"
+        "cold meat",
+        "salami",
+        "prosciutto",
+        "salmon",
+        "beef",
+        "roast beef",
+        "lamb chop"
     ],
     "dairy": [
         "cheese",
@@ -59,10 +65,15 @@
         "eggs",
         "egg",
         "yogurt",
-        "yoghurt"
+        "yoghurt",
+        "whipped cream",
+        "heavy whipping cream",
+        "whipping cream",
+        "whip cream"
     ],
     "bread": [
         "bread",
+        "brioche",
         "whole wheat bread",
         "baguette",
         "bagel",
