@@ -39,23 +39,23 @@ def _parse_list(grocery_list: str) -> set[tuple[int, str]]:
 
     return set(items)
 
-def _classify(item: str) -> str:
+def _classify(item: str) -> tuple[str, str]:
     """
     Determines the category of item. Returns an empty string if no category
-    is matched.
+    is matched. Returns a tuple of category and item useful if translated.
     """
     item = utils.singularize(item).lower()
 
     for category in utils.MAPPING:
         if item in utils.MAPPING[category]: 
-            return category
+            return category, item
 
     # No category found, try translation
     for category in utils.MAPPING:
-        if translators.google(item) in utils.MAPPING[category]:
-            return category
+        if (translated := translators.google(item)) in utils.MAPPING[category]:
+            return category, translated
     
-    return ""
+    return "", item
 
 
 def _order_classification(classification: dict) -> dict[str, list[tuple[int, str]]]:
@@ -91,7 +91,11 @@ def _classify_items(grocery_list: str) -> dict[str, list[tuple[int, str]]]:
     """Classify the grocery list."""
     return_classifications = {"none": []}
     for item_tup in (parsed_list := _parse_list(grocery_list)):
-        category = _classify(item_tup[1])
+        # Update the item if it was translated by _classify
+        item_tup = list(item_tup)
+        category, item_tup[1] = _classify(item_tup[1])
+        item_tup = tuple(item_tup)
+
         if not category: 
             return_classifications["none"].append(item_tup)
         elif category not in return_classifications:
