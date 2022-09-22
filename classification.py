@@ -2,9 +2,6 @@
 Responsible for turning a list of groceries with quantity into a classified
 ordered list.
 """
-# Internal
-import os
-
 # Project
 import utils
 
