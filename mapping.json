@@ -39,6 +39,18 @@
         "asparagus",
         "cabbage"
     ],
+    "self care": [
+        "shampoo",
+        "conditioner",
+        "body wash",
+        "soap",
+        "face wash",
+        "hair dye",
+        "chapstick",
+        "chap stick",
+        "moisturizer",
+        "shaving foam"
+    ],
     "meat": [
         "chicken",
         "chicken thigh",
@@ -71,22 +83,6 @@
         "whipping cream",
         "whip cream"
     ],
-    "bread": [
-        "bread",
-        "brioche",
-        "whole wheat bread",
-        "baguette",
-        "bagel",
-        "tortilla"
-    ],
-    "ingredients": [
-        "olive oil",
-        "cooking oil",
-        "extra virgin olive oil",
-        "vinegar",
-        "cake mix",
-        "cookie dough"
-    ],
     "drinks": [
         "iced tea",
         "coffee",
@@ -96,23 +92,27 @@
         "lipton tea bags",
         "water"
     ],
+    "bread": [
+        "bread",
+        "brioche",
+        "whole wheat bread",
+        "baguette",
+        "bagel",
+        "tortilla"
+    ],
     "snacks": [
         "snack",
         "chips",
         "cookies",
         "dog treat"
     ],
-    "self care": [
-        "shampoo",
-        "conditioner",
-        "body wash",
-        "soap",
-        "face wash",
-        "hair dye",
-        "chapstick",
-        "chap stick",
-        "moisturizer",
-        "shaving foam"
+    "ingredients": [
+        "olive oil",
+        "cooking oil",
+        "extra virgin olive oil",
+        "vinegar",
+        "cake mix",
+        "cookie dough"
     ],
     "appliances": [
         "washing pod",
