@@ -55,5 +55,39 @@
         "whole lactaid",
         "lactaid",
         "2% lactaid"
-    ]   
+    ],
+    "bread": [
+        "bread",
+        "whole wheat bread",
+        "baguette",
+        "bagel",
+        "tortilla"
+    ],
+    "ingredients": [
+        "olive oil",
+        "cooking oil",
+        "extra virgin olive oil",
+        "vinegar",
+        "cake mix",
+        "cookie dough"
+    ],
+    "drinks": [
+        "iced tea",
+        "coffee",
+        "nescafe",
+        "tea bags",
+        "tea",
+        "lipton tea bags"
+    ],
+    "self care": [
+        "shampoo",
+        "conditioner",
+        "body wash",
+        "soap",
+        "face wash",
+        "hair dye",
+        "chapstick",
+        "chap stick",
+        "moisturizer"
+    ]
 }
