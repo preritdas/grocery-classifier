@@ -39,12 +39,25 @@ def _parse_list(grocery_list: str) -> set[tuple[int, str]]:
 
     return set(items)
 
+
+def _check_item_format(item):
+    """
+    Format of an item to be checked in the mapping.
+    Handles paranthesis and caps.
+    """
+    check_item = item
+    if "(" in item:  # paranthesis specifications
+        check_item = item[:item.find("(")].strip()
+
+    return utils.singularize(check_item).lower()
+
+
 def _classify(item: str) -> tuple[str, str]:
     """
     Determines the category of item. Returns an empty string if no category
     is matched. Returns a tuple of category and item useful if translated.
     """
-    check_item = utils.singularize(item).lower()
+    check_item = _check_item_format(item)
 
     for category in utils.MAPPING:
         if check_item in utils.MAPPING[category]: 
@@ -60,7 +73,7 @@ def _order_classification(classification: dict) -> dict[str, list[tuple[int, str
         classification[category] = sorted(
             classification[category], 
             key = lambda item: utils.MAPPING[category].index(
-                utils.singularize(item[1].lower())
+                _check_item_format(item[1])
             )
         )
 
