@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 def alert_use(number, content):
     texts.send_message(
-        f"Grocery list used by {number}. Their list... \n{content}"
+        f"Grocery list used by {number}. Their list... \n\n{content}"
     )
 
 
