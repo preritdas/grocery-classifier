@@ -1,3 +1,6 @@
+![tests](https://github.com/preritdas/grocery-classifier/actions/workflows/pytest.yml/badge.svg)
+
+
 # Grocery Classification
 
 Only one lap around the grocery store...
