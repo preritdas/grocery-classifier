@@ -19,6 +19,9 @@ with open(os.path.join(current_dir, "pluralization_replacements.json")) as f:
 with open(os.path.join(current_dir, "mapping.json")) as f:
     MAPPING: dict[str, list[str]] = json.load(f)
 
+with open(os.path.join(current_dir, "recipient_mapping.json")) as f:
+    CUSTOM_RECIPIENTS: dict[str, str] = json.load(f)
+
 
 def pluralize(word: str):
     """
