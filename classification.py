@@ -21,9 +21,12 @@ def _parse_list(grocery_list: str) -> set[tuple[int, str]]:
         in the name is preserved.
     """
     assert isinstance(grocery_list, str)
+
+    grocery_list_split = grocery_list.splitlines()
+    while '' in grocery_list_split: grocery_list_split.remove('')
     
     items = []
-    for item in grocery_list.splitlines():
+    for item in grocery_list_split:
         split = item.split()
 
         try: item_tup = int(split[0]), " ".join(split[1:])
