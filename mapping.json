@@ -46,7 +46,8 @@
         "lamb",
         "pork",
         "sausage",
-        "bacon"
+        "bacon",
+        "cold meats"
     ],
     "dairy": [
         "cheese",
@@ -54,7 +55,11 @@
         "whole milk",
         "whole lactaid",
         "lactaid",
-        "2% lactaid"
+        "2% lactaid",
+        "eggs",
+        "egg",
+        "yogurt",
+        "yoghurt"
     ],
     "bread": [
         "bread",
@@ -77,7 +82,14 @@
         "nescafe",
         "tea bags",
         "tea",
-        "lipton tea bags"
+        "lipton tea bags",
+        "water"
+    ],
+    "snacks": [
+        "snacks",
+        "chips",
+        "cookies",
+        "dog treats"
     ],
     "self care": [
         "shampoo",
@@ -89,5 +101,11 @@
         "chapstick",
         "chap stick",
         "moisturizer"
+    ],
+    "appliances": [
+        "washing pods",
+        "dish soap",
+        "plastic wrap",
+        "ziplock bags"
     ]
 }
