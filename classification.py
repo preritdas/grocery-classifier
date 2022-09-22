@@ -44,10 +44,10 @@ def _classify(item: str) -> tuple[str, str]:
     Determines the category of item. Returns an empty string if no category
     is matched. Returns a tuple of category and item useful if translated.
     """
-    item = utils.singularize(item).lower()
+    check_item = utils.singularize(item).lower()
 
     for category in utils.MAPPING:
-        if item in utils.MAPPING[category]: 
+        if check_item in utils.MAPPING[category]: 
             return category, item
 
     # No category found, try translation
