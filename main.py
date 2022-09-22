@@ -40,6 +40,7 @@ def inbound_sms():
         # If this is the final concat message
         print("Reading.")
         inbound_sms_content["text"] = ''.join(concats[inbound_sms_content["msisdn"]] + [inbound_sms_content["text"]])
+        del concats[inbound_sms_content["msisdn"]]
             
     sender = inbound_sms_content["msisdn"]
     grocery_list = inbound_sms_content["text"]
