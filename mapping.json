@@ -47,7 +47,7 @@
         "pork",
         "sausage",
         "bacon",
-        "cold meats"
+        "cold meat"
     ],
     "dairy": [
         "cheese",
@@ -86,10 +86,10 @@
         "water"
     ],
     "snacks": [
-        "snacks",
+        "snack",
         "chips",
         "cookies",
-        "dog treats"
+        "dog treat"
     ],
     "self care": [
         "shampoo",
@@ -103,7 +103,7 @@
         "moisturizer"
     ],
     "appliances": [
-        "washing pods",
+        "washing pod",
         "dish soap",
         "plastic wrap",
         "ziplock bags"
