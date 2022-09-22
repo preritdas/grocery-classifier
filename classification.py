@@ -21,8 +21,17 @@ def _parse_list(grocery_list: str) -> set[tuple[int, str]]:
         in the name is preserved.
     """
     assert isinstance(grocery_list, str)
-    return set([tuple(item.split()) for item in grocery_list.splitlines()])
+    
+    items = []
+    for item in grocery_list.splitlines():
+        split = item.split()
 
+        try: item_tup = int(split[0]), " ".join(split[1:])
+        except ValueError: item_tup = "", " ".join(split)
+
+        items.append(tuple(item_tup))
+
+    return set(items)
 
 def _classify(item: str) -> str:
     """
@@ -44,7 +53,9 @@ def _order_classification(classification: dict) -> dict[str, list[tuple[int, str
         if category == "none": continue
         classification[category] = sorted(
             classification[category], 
-            key = lambda item: utils.MAPPING[category].index(utils.singularize(item[1]))
+            key = lambda item: utils.MAPPING[category].index(
+                utils.singularize(item[1].lower())
+            )
         )
 
     classification_keys = list(classification.keys())
@@ -89,7 +100,7 @@ def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
         return_str += f"{category.title()}: \n"
 
         for pos, item in enumerate(items): 
-            return_str += f"{item[0]} {item[1]}"
+            return_str += f"{item[0]} {item[1]}".strip()
             if pos < len(items) - 1: return_str += '\n'
 
         return_str += "\n\n"
@@ -100,3 +111,9 @@ def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
 def classify_grocery_list(grocery_list: str) -> str:
     """Classify the grocery list and return a formatted string grocery list."""
     return _format_list(_classify_items(grocery_list))
+
+
+if __name__ == '__main__':
+    print(classify_grocery_list(
+        grocery_list = "12 bananas\n1 Bread\nWhole milk\n1 baby carrots"
+    ))
