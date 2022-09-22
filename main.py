@@ -18,13 +18,15 @@ def inbound_sms():
     if type(inbound_sms_content) is not dict:
         return ('', 400)
 
-    sender = inbound_sms_content["msisdm"]
+    sender = inbound_sms_content["msisdn"]
     grocery_list = inbound_sms_content["text"]
 
     texts.send_message(
         content = classification.classify_grocery_list(grocery_list),
         recipient = sender
     )
+
+    return '', 204
 
 
 if __name__ == '__main__':
