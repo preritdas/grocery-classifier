@@ -23,7 +23,7 @@ with open(os.path.join(current_dir, "recipient_mapping.json")) as f:
     CUSTOM_RECIPIENTS: dict[str, str] = json.load(f)
 
 
-def pluralize(word: str):
+def pluralize(word: str) -> str:
     """
     Use the pattern library to smartly and correctly pluralize the word.
     """
@@ -31,7 +31,7 @@ def pluralize(word: str):
     return pattern.pluralize(word, custom=PLURAL_REPLACEMENTS)
 
 
-def singularize(word: str):
+def singularize(word: str) -> str:
     """
     Use the pattern library to smartly and correctly pluralize the word.
     """
