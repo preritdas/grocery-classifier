@@ -115,7 +115,7 @@ def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
         return_str += f"{category.title()}: \n"
 
         for pos, item in enumerate(items): 
-            return_str += f"{item[0]} {item[1]}".strip()
+            return_str += f"- {item[0]} {item[1]}".strip()
             if pos < len(items) - 1: return_str += '\n'
 
         return_str += "\n\n"
