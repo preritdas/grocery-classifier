@@ -14,7 +14,8 @@
         "avocado",
         "cherry",
         "pear",
-        "lime"
+        "lime",
+        "avocado"
     ],
     "vegetables": [
         "potato", 
@@ -37,7 +38,8 @@
         "spinach bag",
         "baby spinach bag",
         "asparagus",
-        "cabbage"
+        "cabbage",
+        "bean sprout"
     ],
     "self care": [
         "shampoo",
@@ -65,10 +67,12 @@
         "salmon",
         "beef",
         "roast beef",
-        "lamb chop"
+        "lamb chop",
+        "ham"
     ],
     "dairy": [
         "cheese",
+        "cheddar cheese",
         "milk",
         "whole milk",
         "whole lactaid",
@@ -81,7 +85,8 @@
         "whipped cream",
         "heavy whipping cream",
         "whipping cream",
-        "whip cream"
+        "whip cream",
+        "yakult"
     ],
     "drinks": [
         "iced tea",
@@ -96,6 +101,8 @@
         "bread",
         "brioche",
         "whole wheat bread",
+        "artisanal whole wheat bread",
+        "artisanal bread",
         "baguette",
         "bagel",
         "tortilla"
@@ -104,7 +111,8 @@
         "snack",
         "chips",
         "cookies",
-        "dog treat"
+        "dog treat",
+        "cashews"
     ],
     "ingredients": [
         "olive oil",
