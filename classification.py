@@ -55,7 +55,7 @@ def _classify(item: str) -> tuple[str, str]:
         if (translated := translators.google(item)) in utils.MAPPING[category]:
             return category, translated
     
-    return "", item
+    return "", translators.google(item)  # always return a translation to english
 
 
 def _order_classification(classification: dict) -> dict[str, list[tuple[int, str]]]:
