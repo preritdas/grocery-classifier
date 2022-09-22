@@ -29,7 +29,7 @@ def _classify(item: str) -> str:
     Determines the category of item. Returns an empty string if no category
     is matched.
     """
-    item = utils.singularize(item)
+    item = utils.singularize(item).lower()
 
     for category in utils.MAPPING:
         if item in utils.MAPPING[category]: 
