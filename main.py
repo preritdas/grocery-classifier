@@ -25,3 +25,7 @@ def inbound_sms():
         content = classification.classify_grocery_list(grocery_list),
         recipient = sender
     )
+
+
+if __name__ == '__main__':
+    app.run(port=8080)
