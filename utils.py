@@ -4,8 +4,8 @@ Utils.
 import json
 import os
 
-from pattern import en as pattern
 import nltk; nltk.download('omw-1.4', quiet=True, raise_on_error=True)
+from pattern import en as pattern
 
 
 # ---- CONSTANTS ---- 
