@@ -8,11 +8,16 @@ from pattern import en as pattern
 import nltk; nltk.download('omw-1.4', quiet=True, raise_on_error=True)
 
 
-# Load replacements
+# ---- CONSTANTS ---- 
+
 current_dir = os.path.dirname(os.path.realpath(__file__))
+
 with open(os.path.join(current_dir, "pluralization_replacements.json")) as f:
     PLURAL_REPLACEMENTS: dict[str, str] = json.load(f)
     SINGULAR_REPLACEMENTS = {val: key for key, val in PLURAL_REPLACEMENTS.items()}
+
+with open(os.path.join(current_dir, "mapping.json")) as f:
+    MAPPING: dict[str, list[str]] = json.load(f)
 
 
 def pluralize(word: str):
