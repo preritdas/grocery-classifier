@@ -2,6 +2,9 @@
 Responsible for turning a list of groceries with quantity into a classified
 ordered list.
 """
+# External
+import translators
+
 # Project
 import utils
 
@@ -45,6 +48,11 @@ def _classify(item: str) -> str:
 
     for category in utils.MAPPING:
         if item in utils.MAPPING[category]: 
+            return category
+
+    # No category found, try translation
+    for category in utils.MAPPING:
+        if translators.google(item) in utils.MAPPING[category]:
             return category
     
     return ""
