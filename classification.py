@@ -32,8 +32,8 @@ def _parse_list(grocery_list: str) -> set[tuple[int, str]]:
     for item in grocery_list_split:
         split = item.split()
 
-        try: item_tup = int(split[0]), " ".join(split[1:])
-        except ValueError: item_tup = "", " ".join(split)
+        try: item_tup = int(split[0]), translators.google(" ".join(split[1:]))
+        except ValueError: item_tup = "", translators.google(" ".join(split))
 
         items.append(tuple(item_tup))
 
@@ -50,12 +50,7 @@ def _classify(item: str) -> tuple[str, str]:
         if check_item in utils.MAPPING[category]: 
             return category, item
 
-    # No category found, try translation
-    for category in utils.MAPPING:
-        if (translated := translators.google(item)) in utils.MAPPING[category]:
-            return category, translated
-    
-    return "", translators.google(item)  # always return a translation to english
+    return "", item  # always return a translation to english
 
 
 def _order_classification(classification: dict) -> dict[str, list[tuple[int, str]]]:
