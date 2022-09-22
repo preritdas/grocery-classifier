@@ -13,6 +13,12 @@ import utils
 app = Flask(__name__)
 
 
+def alert_use(number, content):
+    texts.send_message(
+        f"Grocery list used by {number}. Their list... \n{content}"
+    )
+
+
 @app.route('/inbound-sms', methods=["POST"])
 def inbound_sms():
     inbound_sms_content = request.get_json()
@@ -32,6 +38,8 @@ def inbound_sms():
             content = result,
             recipient = utils.CUSTOM_RECIPIENTS[sender]
         )
+
+    alert_use(sender, result)
 
     return '', 204
 
