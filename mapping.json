@@ -1,3 +1,46 @@
 {
-    "fruits": ["apple", "banana"]
+    "fruit": [
+        "apple", 
+        "banana", 
+        "mango", 
+        "plum", 
+        "pluot", 
+        "strawberry", 
+        "grape", 
+        "orange", 
+        "lemon", 
+        "peach", 
+        "blueberry", 
+        "avocado",
+        "cherry",
+        "pear",
+        "lime"
+    ],
+    "vegetables": [
+        "potato", 
+        "sweet potato",
+        "tomato",
+        "onion",
+        "carrot",
+        "baby carrot", 
+        "carrot", 
+        "bell pepper",
+        "cucumber",
+        "lettuce",
+        "broccoli",
+        "cauliflower",
+        "cilantro",
+        "corn",
+        "celery",
+        "spinach",
+        "asparagus",
+        "cabbage"
+    ],
+    "meat": [
+        "chicken",
+        "lamb",
+        "pork",
+        "sausage",
+        "bacon"
+    ]
 }
