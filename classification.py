@@ -100,11 +100,3 @@ def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
 def classify_grocery_list(grocery_list: str) -> str:
     """Classify the grocery list and return a formatted string grocery list."""
     return _format_list(_classify_items(grocery_list))
-
-
-if __name__ == '__main__':
-    print(
-        classify_grocery_list(
-            grocery_list = "2 chicken thighs\n2 apples   \n 1 cucumber \n 2 bacon  \n 1 banana"
-        )
-    )
