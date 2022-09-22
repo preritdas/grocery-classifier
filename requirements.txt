@@ -1,3 +1,4 @@
 pattern==3.6
 flask==2.2.2
 nexmo==2.5.2
+translators==5.4.2
