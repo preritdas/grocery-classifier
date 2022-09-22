@@ -30,7 +30,7 @@ def inbound_sms():
     if type(inbound_sms_content) is not dict:
         return ('', 400)
 
-    if inbound_sms_content["concat"] == "true":
+    if "concat" in inbound_sms_content and inbound_sms_content["concat"] == "true":
         if int(inbound_sms_content["concat-part"]) < int(inbound_sms_content["concat-total"]):
             concats[inbound_sms_content["msisdn"]] = [inbound_sms_content["text"]]
             print("Storing.")
@@ -61,4 +61,4 @@ def inbound_sms():
 
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run(port=8080, debug=True)
