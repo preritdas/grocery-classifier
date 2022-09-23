@@ -41,20 +41,42 @@ def inbound_sms():
 
     # Payload handling
     sender = inbound_sms_content["msisdn"]
-    if sender in payloads: payloads[sender].append(inbound_sms_content)
-    else: payloads[sender] = [inbound_sms_content]
+    concat = False
 
     if "concat" in inbound_sms_content and inbound_sms_content["concat"] == "true":
+        concat = True
+        concat_ref = inbound_sms_content["concat-ref"]
+        concat_part = int(inbound_sms_content["concat-part"])
+
+        if not sender in payloads:
+            payloads[sender] = {
+                concat_ref: {
+                    concat_part: inbound_sms_content
+                }
+            }
+        elif concat_ref not in payloads[sender]:
+            payloads[sender][concat_ref] = {
+                concat_part: inbound_sms_content
+            }
+        else:
+            payloads[sender][concat_ref][concat_part] = inbound_sms_content
+
         required_concats = list(range(1, int(inbound_sms_content["concat-total"]) + 1))
-        present_concats = [int(message["concat-part"]) for message in payloads[sender]]
-        all_present = present_concats == required_concats
+        print(f"{required_concats = }")
+        present_concats = list(payloads[sender][concat_ref].keys())
+        print(f"{present_concats = }")
+        all_present = all(req in present_concats for req in required_concats)
         print(f"{all_present = }")
         
         if not all_present:  # not all messages stored
+            print("Outstanding payloads:", payloads)
             return Response(status=204)
         
         # All are present, construct the grocery list
-        messages = [message["text"] for message in payloads[sender]]
+        messages = []
+        for n in required_concats: 
+            messages.append(payloads[sender][concat_ref][n]["text"])
+
         inbound_sms_content["text"] = ''.join(messages)
             
     grocery_list = inbound_sms_content["text"]
@@ -74,7 +96,7 @@ def inbound_sms():
     alert_use(sender, result)
 
     # Payload handling
-    del payloads[sender]
+    if concat: del payloads[sender]
     print("Outstanding payloads:", payloads)
 
     return Response(status=204)
