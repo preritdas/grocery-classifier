@@ -75,7 +75,7 @@ def inbound_sms():
 
     # Payload handling
     del payloads[sender]
-    print("Payloads:", payloads)
+    print("Outstanding payloads:", payloads)
 
     return Response(status=204)
 
