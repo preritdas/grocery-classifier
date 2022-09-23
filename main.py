@@ -2,7 +2,7 @@
 Main.
 """
 # External
-from flask import Flask, request, Response
+from flask import Flask, request
 
 # Project
 import classification
@@ -21,23 +21,32 @@ def alert_use(number, content):
 
 
 payloads = {}
+handled = []
 
 
 @app.route('/', methods=["GET"])
 def inb():
     print("Received.")
-    return Response(status=204)
+    return '', 204
 
 
 @app.route('/inbound-sms', methods=["POST"])
 def inbound_sms():
+    global handled
     global payloads
 
     inbound_sms_content = request.get_json()
     print("\n", inbound_sms_content, sep="")
 
     if type(inbound_sms_content) is not dict:
-        return Response(status=400)
+        return '', 400
+
+    message_id = inbound_sms_content["messageId"]
+    if message_id in handled:
+        print(f"Message {message_id} already handled.")
+        return '', 204
+    
+    handled.append(message_id)
 
     # Payload handling
     sender = inbound_sms_content["msisdn"]
@@ -70,7 +79,7 @@ def inbound_sms():
         
         if not all_present:  # not all messages stored
             print("Outstanding payloads:", payloads)
-            return Response(status=204)
+            return '', 204
         
         # All are present, construct the grocery list
         messages = []
@@ -99,7 +108,7 @@ def inbound_sms():
     if concat: del payloads[sender]
     print("Outstanding payloads:", payloads)
 
-    return Response(status=204)
+    return '', 204
 
 
 if __name__ == '__main__':
