@@ -107,6 +107,11 @@
         "bagel",
         "tortilla"
     ],
+    "frozen": [
+        "ice cream",
+        "eggo waffles",
+        "frozen waffles"
+    ],
     "snacks": [
         "snack",
         "chips",
