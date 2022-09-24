@@ -15,10 +15,15 @@ There really aren't any. Just a couple things to be aware of to avoid crashing t
 - New line for each item.
 - Quantities go at the beginning, in numeric form. They are optional.
 - Add special options in parenthesis, ex. `3 apples (the good ones)`
+- Setup is optional. It efficiently reorders the categories based on store layout. Create a setup manually in [setups.json](setups.json).
+  - Setup line is case insensitive
+  - Line between setup and content is unnecessary
 
 That's all. Here's a sample...
 
 ```text
+setup: whole foods
+
 8 bananas
 1 blueberry
 1 whole milk
