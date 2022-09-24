@@ -52,27 +52,27 @@ def _check_item_format(item):
     return utils.singularize(check_item).lower()
 
 
-def _classify(item: str) -> tuple[str, str]:
+def _classify(item: str, setup: str) -> tuple[str, str]:
     """
     Determines the category of item. Returns an empty string if no category
     is matched. Returns a tuple of category and item useful if translated.
     """
     check_item = _check_item_format(item)
 
-    for category in utils.MAPPING:
-        if check_item in utils.MAPPING[category]: 
+    for category in utils.MAPPING(setup):
+        if check_item in utils.MAPPING(setup)[category]: 
             return category, item
 
     return "", item  # always return a translation to english
 
 
-def _order_classification(classification: dict) -> dict[str, list[tuple[int, str]]]:
+def _order_classification(classification: dict, setup: str) -> dict[str, list[tuple[int, str]]]:
     """Reorder categories to match the mapping."""
     for category in classification:
         if category == "none": continue
         classification[category] = sorted(
             classification[category], 
-            key = lambda item: utils.MAPPING[category].index(
+            key = lambda item: utils.MAPPING(setup)[category].index(
                 _check_item_format(item[1])
             )
         )
@@ -86,7 +86,7 @@ def _order_classification(classification: dict) -> dict[str, list[tuple[int, str
 
     key_order = sorted(
         classification_keys, 
-        key = lambda category: list(utils.MAPPING.keys()).index(category)
+        key = lambda category: list(utils.MAPPING(setup).keys()).index(category)
     )
 
     if none_present: 
@@ -95,13 +95,13 @@ def _order_classification(classification: dict) -> dict[str, list[tuple[int, str
     return {key: classification[key] for key in key_order}
 
 
-def _classify_items(grocery_list: str) -> dict[str, list[tuple[int, str]]]:
+def _classify_items(grocery_list: str, setup: str) -> dict[str, list[tuple[int, str]]]:
     """Classify the grocery list."""
     return_classifications = {"none": []}
     for item_tup in (parsed_list := _parse_list(grocery_list)):
         # Update the item if it was translated by _classify
         item_tup = list(item_tup)
-        category, item_tup[1] = _classify(item_tup[1])
+        category, item_tup[1] = _classify(item_tup[1], setup=setup)
         item_tup = tuple(item_tup)
 
         if not category: 
@@ -112,7 +112,7 @@ def _classify_items(grocery_list: str) -> dict[str, list[tuple[int, str]]]:
             return_classifications[category].append(item_tup)
 
     # return return_classifications
-    return _order_classification(return_classifications)
+    return _order_classification(return_classifications, setup=setup)
 
 
 def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
@@ -131,9 +131,9 @@ def _format_list(item_list: dict[str, list[tuple[int, str]]]) -> str:
     return return_str[:-2]
 
 
-def classify_grocery_list(grocery_list: str) -> str:
+def classify_grocery_list(grocery_list: str, setup: str = None) -> str:
     """Classify the grocery list and return a formatted string grocery list."""
-    return _format_list(_classify_items(grocery_list))
+    return _format_list(_classify_items(grocery_list, setup=setup))
 
 
 if __name__ == '__main__':
