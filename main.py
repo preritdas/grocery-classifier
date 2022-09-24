@@ -89,9 +89,17 @@ def inbound_sms():
         inbound_sms_content["text"] = ''.join(messages)
             
     grocery_list = inbound_sms_content["text"]
+    
+    # Determine setup
+    setup = None
+    if "setup" in (first_line := grocery_list.splitlines()[0].lower()):
+        setup = first_line[7:].title()
+        grocery_list = "\n".join(grocery_list.splitlines()[1:])  # remove setup line
 
     texts.send_message(
-        content = (result := classification.classify_grocery_list(grocery_list)),
+        content = (
+            result := classification.classify_grocery_list(grocery_list, setup=setup)
+        ),
         recipient = sender
     )
 
