@@ -1,5 +1,6 @@
 ![tests](https://github.com/preritdas/grocery-classifier/actions/workflows/pytest.yml/badge.svg)
 
+**Note: this repo is no longer maintained *here*. It's part of my "Personal API" project, so all updates and developments happen in the "groceries" applet of the API.**
 
 # Grocery Classification
 
